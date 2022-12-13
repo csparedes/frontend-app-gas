@@ -1,11 +1,10 @@
-import 'dart:convert';
-
-import 'package:app_gas/api/api_uno.dart';
-import 'package:app_gas/models/device_model.dart';
-import 'package:app_gas/responses/devices_response.dart';
-import 'package:app_gas/services/local_storage.dart';
-import 'package:app_gas/services/notification_services.dart';
 import 'package:flutter/material.dart';
+
+import '../api/api_uno.dart';
+import '../models/device_model.dart';
+import '../responses/devices_response.dart';
+import '../services/local_storage.dart';
+import '../services/notification_services.dart';
 
 class DevicesProvider extends ChangeNotifier {
   Future<List<DeviceModel>> getAllDevices() async {
@@ -21,7 +20,7 @@ class DevicesProvider extends ChangeNotifier {
         return [];
       }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       return [];
     }
   }

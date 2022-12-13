@@ -1,12 +1,9 @@
-import 'dart:io';
-
-import 'package:app_gas/services/local_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:app_gas/api/api_uno.dart';
 import 'package:flutter/services.dart';
 
 import '../routes/routes.dart';
+import '../services/local_storage.dart';
 import '../services/navigation_services.dart';
 import '../services/notification_services.dart';
 
@@ -27,7 +24,6 @@ class AuthenticationProvider extends ChangeNotifier {
         "email": emailCtrl.text.trim(),
         "clave": passwordCtrl.text,
       });
-      print(loginResponse.data);
       if (loginResponse.status != 200) {
         NotificationServices.showSnackbarError(loginResponse.data['msg']);
       } else {
@@ -42,7 +38,7 @@ class AuthenticationProvider extends ChangeNotifier {
         NavigationServices.pushReplacement(RoutesFluroApp.dashboard);
       }
     } catch (e) {
-      print(e);
+      debugPrint(e.toString());
       NotificationServices.showSnackbarError('Error en la conexión');
     }
   }

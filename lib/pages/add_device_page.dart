@@ -1,5 +1,8 @@
 import 'package:app_gas/pages/widgets/button_form_app.dart';
 import 'package:app_gas/pages/widgets/input_field_form_app.dart';
+import 'package:app_gas/routes/routes.dart';
+import 'package:app_gas/services/navigation_services.dart';
+import 'package:app_gas/services/notification_services.dart';
 import 'package:flutter/material.dart';
 
 class AddDevicePage extends StatelessWidget {
@@ -28,7 +31,14 @@ class AddDevicePage extends StatelessWidget {
                 hint: '',
                 controller: TextEditingController(),
               ),
-              ButtonFormApp(onPressed: () {}, label: 'Add'),
+              ButtonFormApp(
+                  onPressed: () {
+                    NotificationServices.showSnackbarSuccess(
+                        'Se agregó un nuevo dispositivo');
+                    NavigationServices.pushReplacement(
+                        RoutesFluroApp.dashboard);
+                  },
+                  label: 'Add'),
             ],
           ),
         ),
